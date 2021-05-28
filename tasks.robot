@@ -58,7 +58,7 @@ Store the receipt as a PDF file
     [ARGUMENTS]    ${receipt#}
     Wait Until Element Is Visible       //div[@id='receipt']
     ${receipt}=  Get Element Attribute  //div[@id='receipt']    outerHTML 
-    ${pdf}=      Set Variable           ${OUTPUT_DIR}${/}${receipt#}.pdf
+    ${pdf}=      Set Variable           ${OUTPUT_DIR}${/}receipts${/}${receipt#}.pdf
     Html To Pdf     ${receipt}          ${pdf}
     [Return]        ${pdf}
 
@@ -66,7 +66,7 @@ Store the receipt as a PDF file
 Take a screenshot of the robot
     [ARGUMENTS]    ${robot_image}
     Wait Until Element Is Visible       //div[@id='robot-preview-image'] 
-    ${screenshot}=      Set Variable    ${OUTPUT_DIR}${/}${robot_image}.png
+    ${screenshot}=      Set Variable    ${OUTPUT_DIR}${/}images${/}${robot_image}.png
     Screenshot     //div[@id='robot-preview-image']     ${screenshot}
     [Return]        ${screenshot}
 
@@ -77,8 +77,7 @@ Embed the robot screenshot to the receipt PDF file
 
 *** Keywords ***
 Create a ZIP file of the receipts
-    [ARGUMENTS]     ${zip}
-    Archive Folder With Zip     ${zip}      orders.zip
+    Archive Folder With Zip      ${OUTPUT_DIR}${/}receipts      orders.zip      True
 
 *** Keywords ***
 Go to order another robot
@@ -102,7 +101,7 @@ Order robots from RobotSpareBin Industries Inc
         Embed the robot screenshot to the receipt PDF file    ${screenshot}    ${pdf}
         Go to order another robot
     END
-    Create a ZIP file of the receipts   ${pdf}
+    Create a ZIP file of the receipts
 	[Teardown]  Close open browser
 
 
