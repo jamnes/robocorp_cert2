@@ -97,7 +97,7 @@ Order robots from RobotSpareBin Industries Inc
         Fill the form    ${row}
         Wait Until Keyword Succeeds     5x  2s  Submit the order
         ${pdf}=    Store the receipt as a PDF file  ${row}[Order number]
-        ${screenshot}=    Take a screenshot of the robot    ${row}[Order number]
+        ${screenshot}=    Wait Until Keyword Succeeds     5x  2s    Take a screenshot of the robot    ${row}[Order number]
         Embed the robot screenshot to the receipt PDF file    ${screenshot}    ${pdf}
         Go to order another robot
     END
