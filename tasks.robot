@@ -28,7 +28,7 @@ Ask for orders file url
 *** Keywords ***
 Get orders
     [ARGUMENTS]     ${url}  
-	Download		${url}		True
+	Download		${url}		overwrite=True
     ${orders}=      Read Table From Csv	   orders.csv
     [Return]        ${orders}
 
