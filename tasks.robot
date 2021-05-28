@@ -29,7 +29,7 @@ Ask for orders file url
 Get orders
     [ARGUMENTS]     ${url}  
 	Download		${url}		True
-    ${orders}=      Read Table From Csv	   /orders.csv
+    ${orders}=      Read Table From Csv	   orders.csv
     [Return]        ${orders}
 
 *** Keywords ***
