@@ -77,7 +77,7 @@ Embed the robot screenshot to the receipt PDF file
 
 *** Keywords ***
 Create a ZIP file of the receipts
-    Archive Folder With Zip      ${OUTPUT_DIR}${/}receipts      orders.zip      True
+    Archive Folder With Zip      ${OUTPUT_DIR}${/}receipts      ${OUTPUT_DIR}${/}orders.zip      True
 
 *** Keywords ***
 Go to order another robot
